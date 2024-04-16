@@ -1,0 +1,15 @@
+.search-again {
+  background: #004A80;
+}
+
+@media (min-width: 992px) {
+  .search-again {
+    padding: 80px 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .search-again {
+    padding: 40px 0;
+  }
+}

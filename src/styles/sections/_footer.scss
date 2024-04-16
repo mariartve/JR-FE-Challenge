@@ -1,0 +1,20 @@
+.footer {
+  padding: 16px 0;
+
+  p {
+    font-size: 15px;
+    color: #999;
+    line-height: 20px;
+  }
+
+  a {
+    font-size: 14px;
+    font-weight: bold;
+    color: #004A80;
+
+    &:first-of-type:after {
+      content: '|';
+      padding-left: 5px;
+    }
+  }
+}

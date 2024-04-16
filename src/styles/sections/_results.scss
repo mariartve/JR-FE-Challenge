@@ -1,0 +1,54 @@
+.result {
+  background: #F8F8F8;
+  min-height: 455px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .result-card {
+    max-width: 980px;
+    background: #fff;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);
+    border-radius: 30px;
+    padding: 40px;
+    margin: 40px auto;
+
+    .result-avatar {
+      border-radius: 50%;
+      width: 90px;
+      height: 90px;
+      line-height: 86px;
+      background: #004A80;
+      text-align: center;
+      flex: 0 0 90px;
+      margin-right: 20px;
+
+      @media (max-width: 991px) {
+        width: 63px;
+        height: 63px;
+        line-height: 58px;
+        flex: 0 0 63px;
+      }
+
+      img {
+        width: 28px;
+      }
+    }
+
+    .result-desc {
+      color: #4A4A4A;
+    }
+  }
+
+  @media (max-width: 991px) {
+    min-height: 512px;
+  }
+
+  @media (max-width: 767px) {
+    min-height: 306px;
+
+    .result-avatar {
+      display: none;
+    }
+  }
+}
