@@ -18,7 +18,12 @@
         <div>
           <img src="assets/search.svg" width="23" height="23" alt="Search">
           <!-- Adjusted the person's icon with the correct size according to the specs using the images's dimensions. -->
-          <img width="20" height="23" src="assets/person.svg" alt="Profile">
+          
+          <!-- After changing the icon's size, I noticed there was not the appropriate separation between it and the search icon,
+          even though it had the class "ml-4". So I went ahead and reviewed bootstrap's documentation and ended up finding out 
+          "m-4" was the right fit for solving the issue. -->
+          
+          <img width="20" height="23" class="m-4" src="assets/person.svg" alt="Profile">
         </div>
       </div>
     </nav>
