@@ -51,47 +51,57 @@
           <h1 class="text-primary text-center mb-2 mb-md-4">Here's How It Works</h1>
           <h2 class="text-secondary">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h2>
         </div>
+
+        <!-- The previous layout was inefficient, since it was organized in a single "row" containing the columns, considering 
+        only how it was displayed on the desktop view. This created a problem when the site had to be responsive. 
+        Therefore, the item's order was incorrect. By only having two columns containing the items vertically in order, we can 
+        ensure that the order is correct when the site is viewed on a smaller device. -->
+
         <div class="row">
-          <div class="list-item col-md-6 d-flex align-items-lg-center">
-            <div class="list-circle">1</div>
-            <div class="list-text">
-              <h3>Lorem Ipsum</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <div class="col-md-6">
+            <div class="list-item d-flex align-items-lg-center">
+              <div class="list-circle">1</div>
+              <div class="list-text">
+                <h3>Lorem Ipsum</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              </div>
+            </div>
+            <div class="list-item d-flex align-items-lg-center">
+              <div class="list-circle">2</div>
+              <div class="list-text">
+                <h3>Lorem Ipsum</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              </div>
+            </div>
+            <div class="list-item d-flex align-items-lg-center">
+              <div class="list-circle">3</div>
+              <div class="list-text">
+                <h3>Lorem Ipsum</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              </div>
             </div>
           </div>
-          <div class="list-item col-md-6 d-flex align-items-lg-center">
-            <div class="list-circle">4</div>
-            <div class="list-text">
-              <h3>Lorem Ipsum</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <div class="col-md-6">
+            <div class="list-item d-flex align-items-lg-center">
+              <div class="list-circle">4</div>
+              <div class="list-text">
+                <h3>Lorem Ipsum</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              </div>
             </div>
-          </div>
-          <div class="list-item col-md-6 d-flex align-items-lg-center">
-            <div class="list-circle">2</div>
-            <div class="list-text">
-              <h3>Lorem Ipsum</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <div class="list-item d-flex align-items-lg-center">
+              <div class="list-circle">5</div>
+              <div class="list-text">
+                <h3>Lorem Ipsum</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              </div>
             </div>
-          </div>
-          <div class="list-item col-md-6 d-flex align-items-lg-center">
-            <div class="list-circle">5</div>
-            <div class="list-text">
-              <h3>Lorem Ipsum</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </div>
-          </div>
-          <div class="list-item col-md-6 d-flex align-items-lg-center mb-md-0">
-            <div class="list-circle">3</div>
-            <div class="list-text">
-              <h3>Lorem Ipsum</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </div>
-          </div>
-          <div class="list-item col-md-6 d-flex align-items-lg-center mb-md-0">
-            <div class="list-circle">6</div>
-            <div class="list-text">
-              <h3>Lorem Ipsum</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <div class="list-item d-flex align-items-lg-center">
+              <div class="list-circle">6</div>
+              <div class="list-text">
+                <h3>Lorem Ipsum</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              </div>
             </div>
           </div>
         </div>
