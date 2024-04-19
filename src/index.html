@@ -35,7 +35,14 @@
           <h1 class="mb-3">Start Your Search!</h1>
           <h2>Look up for people's name, photos and online profiles with their email address or phone number. See what you find!</h2>
         </div>
-
+        <!-- Added the elements needed for the new feature -->
+        <div class="container text-white mb-3 text-center">
+          <div class="d-flex justify-content-center justify-content-lg-start">
+            <p class="text-uppercase d-none d-sm-inline font-size-16">Type of Search:</p>
+            <button id="email-btn-search" class="text-uppercase mx-3 option-select-btn arrow-bottom active" type="button">Email Address</button>
+            <button id="phone-btn-search" class="text-uppercase option-select-btn arrow-bottom" type="button">Phone Number</button>
+          </div>
+        </div>
         <form>
           <!-- Applied boottrap classes to make the layout more responsive, and attach the error 
           message to the bottom of the input -->
@@ -44,7 +51,7 @@
               <div class="container-form d-flex flex-column flex-md-row align-items-start">
                 <div class="input-group me-md-2">
                   <input id="email-search-input" class="form-control" type="text" name="email" placeholder="Enter an Email Address" />
-                  <div class="error-msg">Please enter a valid email address</div>
+                  <div id="error-msg-s" class="error-msg">Please enter a valid email address</div>
                 </div>
                 <button class="js-btn-search btn btn-form-submit text-uppercase" type="submit" data-form="search">Go!</button>
               </div>
@@ -179,11 +186,27 @@
           <h1 class="mb-3">Can't Find The Right Person?</h1>
           <h2 class="mb-4 mb-md-5"><strong>Try Again</strong> - Make a new search</h2>
         </div>
+        <!-- Added the elements needed for the new feature as well -->
+        <div class="container text-white mb-3 text-center">
+          <div class="d-flex justify-content-center justify-content-lg-start">
+            <p class="text-uppercase d-none d-sm-inline font-size-16">Type of Search:</p>
+            <button id="email-btn-search-again" class="text-uppercase mx-3 option-select-btn arrow-bottom active" type="button">Email Address</button>
+            <button id="phone-btn-search-again" class="text-uppercase option-select-btn arrow-bottom" type="button">Phone Number</button>
+          </div>
+        </div>
         <form>
-          <div class="input-group">
-            <input id="email-search-again-input" class="form-control" type="text" name="email" placeholder="Enter an Email Address" />
-            <p class="error-msg">Please enter a valid email address</p>
-            <button class="js-btn-search btn btn-form-submit text-uppercase" type="submit" data-form="search-again">Go!</button>
+          <!-- Applied boottrap classes to make the layout more responsive, and attach the error 
+          message to the bottom of the input -->
+          <div class="row">
+            <div class="col md-6">
+              <div class="container-form d-flex flex-column flex-md-row align-items-start">
+                <div class="input-group me-md-2">
+                  <input id="email-search-again-input" class="form-control" type="text" name="email" placeholder="Enter an Email Address" />
+                  <div id="error-msg-sa" class="error-msg">Please enter a valid email address</div>
+                </div>
+                <button class="js-btn-search btn btn-form-submit text-uppercase" type="submit" data-form="search-again">Go!</button>
+              </div>
+            </div>
           </div>
         </form>
       </div>

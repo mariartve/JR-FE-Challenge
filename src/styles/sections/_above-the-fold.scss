@@ -7,3 +7,35 @@
   max-width: 780px;
   margin: 0 auto;
 }
+
+.font-size-16 {
+  font-size: 16px;
+}
+
+.option-select-btn {
+  border: 3px solid #F6BC25;
+  border-radius: 6px;
+  background-color: transparent;
+  color: #F6BC25;
+  font-size: 16px;
+  position: relative;
+  height: 35px;
+}
+
+.option-select-btn.active {
+  background-color: #F6BC25;
+  color: #004A80;
+  font-weight: 700;
+}
+
+.option-select-btn.active::after {
+  content: " ";
+  position: absolute;
+  right: 50%; 
+  transform: translateX(50%); 
+  bottom: -8px;
+  border-top: 5px solid #F6BC25;
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
+  border-bottom: none;
+}
