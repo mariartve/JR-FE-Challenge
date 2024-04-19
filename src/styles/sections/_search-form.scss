@@ -1,5 +1,6 @@
 .btn-form-submit {
   font-size: 24px;
+  height: 70px;
   font-weight: bold;
   color: #004A80 !important; /* Added the !important property because I noticed the text color turned black when the state changed */
   background-color: #F6BC25; /* Added a background-color to prevent the blue background being visible for a moment when in hover state */
@@ -11,7 +12,7 @@
   -webkit-appearance: none;
   width: 180px;
   margin-left: 20px;
-  
+
 
   @media (max-width: 767px) {
     width: 100%;
@@ -30,9 +31,14 @@
 
 }
 
+@media (max-width: 767px) {
+  .input-group.error + .btn-form-submit {
+    margin-top: 40px;
+  }
+}
+
 
 .input-group {
-  position: relative;
   > .form-control {
     height: 70px;
     background: #FFF;
@@ -81,4 +87,12 @@
   color: #FFF;
   border-radius: 0 0 3px 3px;
   font-size: 16px;
+  
+  /* Adjusted the error messages' dimensions and position on smaller screens */
+  @media (max-width: 767px) {
+    width: 100%;
+    height: 30px;
+    left: 1px;
+  }  
 }
+

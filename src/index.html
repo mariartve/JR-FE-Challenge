@@ -37,12 +37,20 @@
         </div>
 
         <form>
-          <div class="input-group">
-            <!-- Noticed that in the specs there was space between the input and the button, so I added some margin to both elements -->
-            <input id="email-search-input" class="form-control m-2" type="text" name="email" placeholder="Enter an Email Address" />
-            <p class="error-msg">Please enter a valid email address</p>
-            <button class="js-btn-search btn btn-form-submit text-uppercase  m-2" type="submit" data-form="search">Go!</button>
+          <!-- Applied boottrap classes to make the layout more responsive, and attach the error 
+          message to the bottom of the input -->
+          <div class="row">
+            <div class="col md-6">
+              <div class="container-form d-flex flex-column flex-md-row align-items-start">
+                <div class="input-group me-md-2">
+                  <input id="email-search-input" class="form-control" type="text" name="email" placeholder="Enter an Email Address" />
+                  <div class="error-msg">Please enter a valid email address</div>
+                </div>
+                <button class="js-btn-search btn btn-form-submit text-uppercase" type="submit" data-form="search">Go!</button>
+              </div>
+            </div>
           </div>
+          
           <div class="d-flex justify-content-start justify-content-md-end align-items-center mt-4">
             <img src="assets/lock.svg" alt="lock">
             <p class="form-subtext">People in the search won't be notified.</p>
