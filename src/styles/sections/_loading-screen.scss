@@ -1,20 +1,28 @@
 .loading-screen {
     background-color: #F8F8F8;
+    display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
     width: 100%;
+    height: 80vh;
+    @media (max-width: 767px) {
+        height: 60vh;
+    }  
+}
 
-    img{
-        width: 154px;
-        height: 154px;
-    }
-    p {
-        margin-top: 27px;
-        font-size: 24px;
-        color: #004A80;
-        letter-spacing: 0;
-        text-align: center;
-        font-weight: 700;
-    }
+.loading-content {
+    text-align: center;
+}
+
+.loading-content img {
+    width: 154px;
+    height: 154px;
+}
+
+.loading-content p {
+    margin-top: 27px; 
+    font-size: 24px;
+    color: #004A80;
+    letter-spacing: 0;
+    font-weight: 700;
 }
