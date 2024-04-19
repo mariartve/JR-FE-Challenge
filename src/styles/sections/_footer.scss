@@ -5,12 +5,15 @@
     font-size: 15px;
     color: #999;
     line-height: 20px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 400;
   }
 
   a {
     font-size: 14px;
     font-weight: bold;
     color: #004A80;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
     &:first-of-type:after {
       content: '|';
