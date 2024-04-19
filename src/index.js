@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.css';
-import './styles.css';
+import './styles/main.scss';
 import { initInputValidation, initSearchButton } from './js/form-validation';
 
 (function init() {
