@@ -1,5 +1,9 @@
 import { populateResultsData } from './results';
 
+/* Declared the API request fields to avoid repetitive code */
+const API_BASE_URL = 'https://ltvdataapi.devltv.co/api/v1/records?';
+const PROXY_URL = ''; 
+
 /* Created functions to show/hide the loading screen accordingly */
 function showLoadingScreen() {
   const loadingScreen = document.getElementById('loading-screen');
@@ -30,58 +34,38 @@ function showResultsSection() {
     hideLoadingScreen();
     searchAgainSection.classList.remove('d-none');
     resultsSection.classList.remove('d-none');
-  }, 3000);
+  }, 500);
 }
 
-const emailSearchButton = document.getElementById('email-btn-search');
-const phoneSearchButton = document.getElementById('phone-btn-search');
-const emailInput = document.getElementById('email-search-input');
-const errorMsg = document.getElementById('error-msg-s');
+/* Improved the change between search modes making it more dynamic and generic, reducing repetitive code*/
+function initSearchSection(containerName, emailBtnName, phoneBtnName, emailInputName, errorMsgName) {
+  const container = document.getElementById(containerName);
+  const emailSearchButton = container.querySelector(`#${emailBtnName}`);
+  const phoneSearchButton = container.querySelector(`#${phoneBtnName}`);
+  const emailInput = container.querySelector(`#${emailInputName}`);
+  const errorMsg = container.querySelector(`#${errorMsgName}`);
 
-emailSearchButton.addEventListener('click', function (e) {
-  e.preventDefault();
-  phoneSearchButton.classList.remove('active');
-  emailSearchButton.classList.add('active');
-  emailInput.placeholder = "Enter an email address";
-  errorMsg.innerText = "Please enter a valid email address";
-});
+  emailSearchButton.addEventListener('click', function (e) {
+    e.preventDefault();
+    phoneSearchButton.classList.remove('active');
+    emailSearchButton.classList.add('active');
+    emailInput.placeholder = "Enter an email address";
+    errorMsg.innerText = "Please enter a valid email address";
+  });
 
-phoneSearchButton.addEventListener('click', function (e) {
-  e.preventDefault();
-  emailSearchButton.classList.remove('active');
-  phoneSearchButton.classList.add('active');
-  emailInput.placeholder = "Enter a phone number"; 
-  errorMsg.innerText = "Please enter a valid phone number";
-});
+  phoneSearchButton.addEventListener('click', function (e) {
+    e.preventDefault();
+    emailSearchButton.classList.remove('active');
+    phoneSearchButton.classList.add('active');
+    emailInput.placeholder = "Enter a phone number"; 
+    errorMsg.innerText = "Please enter a valid phone number";
+  });
+}
 
-const emailSearchButtonSA = document.getElementById('email-btn-search-again');
-const phoneSearchButtonSA = document.getElementById('phone-btn-search-again');
-const emailInputSA = document.getElementById('email-search-again-input');
-const errorMsgSA = document.getElementById('error-msg-sa');
+// Apply the above function to both forms
+initSearchSection('search-again', 'email-btn-search-again', 'phone-btn-search-again', 'email-search-again-input', 'error-msg-sa');
+initSearchSection('main-form', 'email-btn-search', 'phone-btn-search', 'email-search-input', 'error-msg-s');
 
-emailSearchButtonSA.addEventListener('click', function (e) {
-  e.preventDefault();
-  phoneSearchButtonSA.classList.remove('active');
-  emailSearchButtonSA.classList.add('active');
-  emailInputSA.placeholder = "Enter an email address";
-  errorMsgSA.innerText = "Please enter a valid email address";
-});
-
-phoneSearchButtonSA.addEventListener('click', function (e) {
-  e.preventDefault();
-  emailSearchButtonSA.classList.remove('active');
-  phoneSearchButtonSA.classList.add('active');
-  emailInputSA.placeholder = "Enter a phone number"; 
-  errorMsgSA.innerText = "Please enter a valid phone number";
-});
-
-emailInput.addEventListener('click', function() {
-  emailInput.parentNode.classList.remove('error');
-})
-
-emailInputSA.addEventListener('click', function() {
-  emailInputSA.parentNode.classList.remove('error');
-})
 
 function initInputValidation() {
   document.querySelectorAll('input[type="text"]').forEach(function (input) {
@@ -89,34 +73,36 @@ function initInputValidation() {
       const searchValue = input.value.toLowerCase();
       let isValid = false;
       let apiUrl = '';
-      let localEmailSearchButton = null, localPhoneSearchButton = null;
-      
-      if (input.id === emailInput.id) {
-        localEmailSearchButton = emailSearchButton;
-        localPhoneSearchButton = phoneSearchButton;
-      } else if (input.id === emailInputSA.id){
-        localEmailSearchButton = emailSearchButtonSA;
-        localPhoneSearchButton = phoneSearchButtonSA;
+      let emailSearchButton, phoneSearchButton;
+
+      /* Reviewed the management of the needed elements making it simpler */
+      if (input.id === "email-search-input") {
+        emailSearchButton = document.getElementById('email-btn-search');
+        phoneSearchButton = document.getElementById('phone-btn-search');
+      } else if (input.id === "email-search-again-input") {
+        emailSearchButton = document.getElementById('email-btn-search-again');
+        phoneSearchButton = document.getElementById('phone-btn-search-again');
+      }
+      else {
+        return;
       }
 
-      if (localEmailSearchButton.classList.contains('active')) {
-          isValid = validateEmail(searchValue);
-          apiUrl = 'https://ltvdataapi.devltv.co/api/v1/records?email=';
-      } else if (localPhoneSearchButton.classList.contains('active')) {
-          isValid = validatePhoneNumber(searchValue);
-          apiUrl = 'https://ltvdataapi.devltv.co/api/v1/records?phone='
+      if (emailSearchButton.classList.contains('active')) {
+        isValid = validateEmail(searchValue);
+        apiUrl = `${API_BASE_URL}email=`;
+      } else if (phoneSearchButton.classList.contains('active')) {
+        isValid = validatePhoneNumber(searchValue);
+        apiUrl = `${API_BASE_URL}phone=`;
       }
 
       const keycode = event.keyCode ? event.keyCode : event.which;
       if (keycode == '13') {
         event.preventDefault();
         localStorage.clear();
-
         if (isValid) {
-          const proxyurl = '';
           const url = apiUrl + searchValue;
           showLoadingScreen(); // Show loading screen before fetch
-          fetch(proxyurl + url)
+          fetch(PROXY_URL + url)
             .then(function (response) {
               return response.text();
             })
@@ -135,6 +121,7 @@ function initInputValidation() {
   });
 }
 
+
 function initSearchButton() {
   document.querySelectorAll('.js-btn-search').forEach(function (button) {
     button.addEventListener('click', function (e) {
@@ -151,18 +138,17 @@ function initSearchButton() {
 
       if (emailSearchButton.classList.contains('active')) {
         isValid = validateEmail(searchValue);
-        apiUrl = 'https://ltvdataapi.devltv.co/api/v1/records?email=';
+        apiUrl = `${API_BASE_URL}email=`;
       } else if (phoneSearchButton.classList.contains('active')) {
           isValid = validatePhoneNumber(searchValue);
-          apiUrl = 'https://ltvdataapi.devltv.co/api/v1/records?phone='
+          apiUrl = `${API_BASE_URL}phone=`;
       }
 
       if (isValid) {
         emailInput.parentNode.classList.remove('error');
-        const proxyurl = '';
         const url = apiUrl + searchValue;
         showLoadingScreen(); 
-        fetch(proxyurl + url)
+        fetch(PROXY_URL + url)
           .then(function (response) {
             return response.text();
           })
@@ -180,15 +166,27 @@ function initSearchButton() {
   });
 }
 
+/* Added validation functions so they can be used when and wherever needed */
 function validateEmail(email) {
   const regEx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
   return regEx.test(email);
 }
 
-
 function validatePhoneNumber(phoneNumber) {
   const regEx = /^\d{10}$/; 
   return regEx.test(phoneNumber);
 }
+
+const emailInput = document.getElementById('email-search-input');
+const emailInputSA = document.getElementById('email-search-again-input');
+
+/* Click event listeners to hide the error message when clicking the input again */
+function handleInputClick(event) {
+  event.target.parentNode.classList.remove('error');
+}
+
+emailInput.addEventListener('click', handleInputClick);
+emailInputSA.addEventListener('click', handleInputClick);
+
 
 export { initInputValidation, initSearchButton };
