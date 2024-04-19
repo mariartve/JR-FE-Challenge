@@ -1,0 +1,20 @@
+.loading-screen {
+    background-color: #F8F8F8;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+
+    img{
+        width: 154px;
+        height: 154px;
+    }
+    p {
+        margin-top: 27px;
+        font-size: 24px;
+        color: #004A80;
+        letter-spacing: 0;
+        text-align: center;
+        font-weight: 700;
+    }
+}

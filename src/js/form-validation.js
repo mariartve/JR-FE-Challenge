@@ -1,5 +1,17 @@
 import { populateResultsData } from './results';
 
+
+/* Created functions to show/hide the loading screen accordingly */
+function showLoadingScreen() {
+  const loadingScreen = document.getElementById('loading-screen');
+  loadingScreen.classList.remove('d-none');
+}
+
+function hideLoadingScreen() {
+  const loadingScreen = document.getElementById('loading-screen');
+  loadingScreen.classList.add('d-none');
+}
+
 function showResultsSection() {
   const mainFormSection = document.getElementById('main-form');
   const searchAgainSection = document.getElementById('search-again');
@@ -7,11 +19,19 @@ function showResultsSection() {
   const resultsSection = document.getElementById('results');
 
   populateResultsData();
-
+  
+  /* Hide any of this sections that could be displayed on screen before showing the loading screen */
   mainFormSection.classList.add('d-none');
   featuresSection.classList.add('d-none');
-  searchAgainSection.classList.remove('d-none');
-  resultsSection.classList.remove('d-none');
+  searchAgainSection.classList.add('d-none');
+  resultsSection.classList.add('d-none');
+ 
+  /* Display the loading screen for an extra 0.5 seconds so it is more visible, then hide it and show the results */
+  setTimeout(function() {
+    hideLoadingScreen();
+    searchAgainSection.classList.remove('d-none');
+    resultsSection.classList.remove('d-none');
+  }, 500);
 }
 
 function initInputValidation() {
@@ -33,6 +53,7 @@ function initInputValidation() {
         if (x === true) {
           const proxyurl = '';
           const url = 'https://ltvdataapi.devltv.co/api/v1/records?email=' + email;
+          showLoadingScreen(); // Show loading screen before fetch
           fetch(proxyurl + url)
             .then(function (response) {
               return response.text();
@@ -73,6 +94,7 @@ function initSearchButton() {
         emailInput.parentNode.classList.remove('error');
         const proxyurl = '';
         const url = 'https://ltvdataapi.devltv.co/api/v1/records?email=' + email;
+        showLoadingScreen(); // Show loading screen before fetch
         fetch(proxyurl + url)
           .then(function (response) {
             return response.text();
