@@ -20,6 +20,33 @@
   font-size: 16px;
   position: relative;
   height: 35px;
+  &:hover {
+    /* Changed the background to the specified one and added the !important property for preventing any possible overrides */
+    background-color: #F2DA56 !important; 
+    border-color: #F2DA56;
+    color: #004A80;
+    font-weight: 700;
+  }  
+  &:active {
+    background-color: #F6BC25;
+    color: #004A80;
+    font-weight: 700;
+  }
+  &:active::after {
+    content: " ";
+    position: absolute;
+    right: 50%; 
+    transform: translateX(50%); 
+    bottom: -8px;
+    border-top: 5px solid #F6BC25;
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+    border-bottom: none;
+  }
+  &:active:hover::after {
+    border-top-color: #F2DA56; 
+  }
+  
 }
 
 .option-select-btn.active {
@@ -38,4 +65,14 @@
   border-right: 5px solid transparent;
   border-left: 5px solid transparent;
   border-bottom: none;
+}
+
+.option-select-btn.active:hover::after {
+  border-top-color: #F2DA56; 
+}
+
+@media (max-width: 767px) {
+  .option-select-btn {
+    width: 100%;
+  }
 }
